@@ -19,7 +19,8 @@ urlpatterns = [
     path('api-token-auth/', auth_views.obtain_auth_token),
     path('favourite-movie/', views.FavouriteView.as_view(), name='favourite-movies'),
     path('movies/search/', MovieSearchView.as_view(), name='movie-search'),  
-    path('movies', MovieViewSet.as_view({'post': 'create'})),  # Rota para criação de filmes
-    path('/movies', MovieViewSet.as_view({'get': 'list'})),  # Rota para listagem de filmes
-
+    path('movies/<int:pk>', views.MovieViewSet.as_view({'put': 'update'})),  # Rota para atualização de filmes
+    path('movies', views.MovieViewSet.as_view({'post': 'create'})),  # Rota para criação de filmes
+    path('movies', views.MovieViewSet.as_view({'get': 'list'})),  # Rota para listagem de filmes
 ]
+

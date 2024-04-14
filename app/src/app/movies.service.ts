@@ -40,14 +40,6 @@ export class MoviesService {
     );
   }
 
-  getMovie(id: number): Observable<Movie> {
-    const url = `${environment.apiURL}/movies/${id}`;
-    console.log('URL do filme:', url); // Adiciona um log para imprimir a URL do filme
-    return this.http.get<Movie>(url).pipe(
-      catchError(this.handleError)
-    );
-  }
-
   markAsFavorite(movieId: number, isFavorite: boolean): Observable<any> {
     const url = `${environment.apiURL}/favourite-movie/`;
     const payload = {
@@ -66,15 +58,15 @@ export class MoviesService {
     );
   }
 
-  saveMovie(movie: Movie): Observable<any> {
-    const url = `${environment.apiURL}/movies/${movie.id}/`;
+  updateMovie(id: number, movie: Movie): Observable<any> {
+    const url = `${environment.apiURL}/movies/${id}`;
     return this.http.put<any>(url, movie).pipe(
       catchError(this.handleError)
     );
   }
 
   deleteMovie(id: number): Observable<any> {
-    const url = `${environment.apiURL}/movies/${id}/`;
+    const url = `${environment.apiURL}/movies/${id}`;
     return this.http.delete<any>(url).pipe(
       catchError(this.handleError)
     );
@@ -92,3 +84,4 @@ export class MoviesService {
     return throwError('Ocorreu um erro. Por favor, tente novamente mais tarde.');
   }
 }
+

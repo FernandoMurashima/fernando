@@ -10,7 +10,8 @@ import { ActivatedRoute, Router } from '@angular/router';
 export class MovieEditComponent implements OnInit {
   movie: Movie | undefined;
   originalMovie: Movie | undefined;
-  movieId: number | undefined; // Adicionando uma variável para armazenar o ID do filme
+  movieId: number | undefined;
+  errorMessage: string | undefined;
 
   constructor(
     private moviesService: MoviesService,
@@ -20,25 +21,38 @@ export class MovieEditComponent implements OnInit {
 
   ngOnInit(): void {
     this.route.params.subscribe(params => {
-      this.movieId = params['id']; // Obtendo o ID do filme da URL
+      this.movieId = params['id'];
       if (this.movieId) {
-        this.loadMovie(this.movieId); // Carregando os dados do filme com base no ID
+        this.loadMovie(this.movieId);
       }
     });
   }
 
   loadMovie(id: number): void {
-    this.moviesService.get(id).subscribe(movie => {
-      this.movie = movie;
-      this.originalMovie = { ...movie };
-    });
+    this.moviesService.get(id).subscribe(
+      movie => {
+        this.movie = movie;
+        this.originalMovie = { ...movie };
+        this.errorMessage = undefined; // Clear error message if movie is found
+      },
+      error => {
+        console.error('Filme não encontrado');
+        this.movie = undefined;
+        this.originalMovie = undefined;
+        this.errorMessage = 'Filme não encontrado'; // Set error message
+      }
+    );
   }
 
   saveMovie(): void {
     if (this.movie) {
-      this.moviesService.addMovie(this.movie).subscribe(() => {
-        alert('Filme salvo com sucesso!');
-      });
+      if (this.originalMovie && this.movieId) {
+        this.moviesService.updateMovie(this.movieId, this.movie).subscribe(() => {
+          alert('Filme atualizado com sucesso!');
+        });
+      } else {
+        console.error('Nenhum filme encontrado para atualizar');
+      }
     }
   }
 

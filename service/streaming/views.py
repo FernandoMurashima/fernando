@@ -1,5 +1,5 @@
 from django.contrib.auth import get_user_model
-from rest_framework import views, viewsets, permissions
+from rest_framework import views, viewsets, permissions, status
 from rest_framework.exceptions import APIException
 from rest_framework.response import Response
 from rest_framework.parsers import JSONParser
@@ -27,6 +27,14 @@ class MovieViewSet(viewsets.ModelViewSet):
         queryset = self.filter_queryset(self.get_queryset())  # Aplicar filtros, se houver
         serializer = self.get_serializer(queryset, many=True)
         return Response(serializer.data)
+
+    def put(self, request, pk):
+        movie = self.get_object()
+        serializer = MovieSerializer(movie, data=request.data)
+        if serializer.is_valid():
+            serializer.save()
+            return Response(serializer.data)
+        return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
 
 class FavouriteViewSet(viewsets.ModelViewSet):
     """
