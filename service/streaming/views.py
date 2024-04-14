@@ -23,6 +23,11 @@ class MovieViewSet(viewsets.ModelViewSet):
     serializer_class = MovieSerializer
     permission_classes = [permissions.IsAuthenticated]
 
+    def list(self, request, *args, **kwargs):
+        queryset = self.filter_queryset(self.get_queryset())  # Aplicar filtros, se houver
+        serializer = self.get_serializer(queryset, many=True)
+        return Response(serializer.data)
+
 class FavouriteViewSet(viewsets.ModelViewSet):
     """
     Favourite viewset.

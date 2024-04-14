@@ -22,7 +22,8 @@ import { MovieListComponent } from './movie-list/movie-list.component';
 import { MovieDetailsComponent } from './movie-details/movie-details.component';
 import { IndexComponent } from './index/index.component';
 import { AdminComponent } from './admin/admin.component';
-import { MoviesService } from './movies.service'; // Importe o MoviesService aqui
+import { MoviesService } from './movies.service';
+import { MovieEditComponent } from './movie-edit/movie-edit.component'; // Importe o MoviesService aqui
 
 @NgModule({
   declarations: [
@@ -31,7 +32,8 @@ import { MoviesService } from './movies.service'; // Importe o MoviesService aqu
     MovieListComponent,
     MovieDetailsComponent,
     IndexComponent,
-    AdminComponent
+    AdminComponent,
+    MovieEditComponent
   ],
   imports: [
     BrowserModule,

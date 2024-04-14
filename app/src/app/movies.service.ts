@@ -19,12 +19,10 @@ export interface Movie {
 })
 export class MoviesService {
 
-  constructor(
-    private http: HttpClient
-  ) { }
+  constructor(private http: HttpClient) { }
 
   load(searchPattern: string): Observable<Array<Movie>> {
-    let url = `${environment.apiURL}/movies`;
+    let url = `${environment.apiURL}/movies/`;
     if (searchPattern) {
       url += `?search=${searchPattern}`;
     }
@@ -35,6 +33,14 @@ export class MoviesService {
   }
 
   get(id: number): Observable<Movie> {
+    const url = `${environment.apiURL}/movies/${id}`;
+    console.log('URL do filme:', url); // Adiciona um log para imprimir a URL do filme
+    return this.http.get<Movie>(url).pipe(
+      catchError(this.handleError)
+    );
+  }
+
+  getMovie(id: number): Observable<Movie> {
     const url = `${environment.apiURL}/movies/${id}`;
     console.log('URL do filme:', url); // Adiciona um log para imprimir a URL do filme
     return this.http.get<Movie>(url).pipe(
@@ -56,6 +62,20 @@ export class MoviesService {
   addMovie(movie: Movie): Observable<any> {
     const url = `${environment.apiURL}/movies`;
     return this.http.post<any>(url, movie).pipe(
+      catchError(this.handleError)
+    );
+  }
+
+  saveMovie(movie: Movie): Observable<any> {
+    const url = `${environment.apiURL}/movies/${movie.id}/`;
+    return this.http.put<any>(url, movie).pipe(
+      catchError(this.handleError)
+    );
+  }
+
+  deleteMovie(id: number): Observable<any> {
+    const url = `${environment.apiURL}/movies/${id}/`;
+    return this.http.delete<any>(url).pipe(
       catchError(this.handleError)
     );
   }

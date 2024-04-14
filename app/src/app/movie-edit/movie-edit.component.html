@@ -1,0 +1,45 @@
+<div>
+    <label for="movieId">ID do Filme:</label>
+    <input type="number" id="movieId" name="movieId" [(ngModel)]="movieId">
+    <button (click)="movieId !== undefined && loadMovie(movieId)">Carregar Filme</button>
+</div>
+
+  
+
+<div *ngIf="movie">
+    <h1>Editando Filme</h1>
+    <form>
+      <label for="title">Título:</label>
+      <input type="text" id="title" name="title" [(ngModel)]="movie.title" required>
+  
+      <label for="year">Ano:</label>
+      <input type="number" id="year" name="year" [(ngModel)]="movie.year" required>
+  
+      <label for="cover">Capa:</label>
+      <input type="text" id="cover" name="cover" [(ngModel)]="movie.cover" required>
+  
+      <label for="description">Descrição:</label>
+      <textarea id="description" name="description" [(ngModel)]="movie.description" required></textarea>
+  
+      <label for="midia">Mídia:</label>
+      <select id="midia" name="midia" [(ngModel)]="movie.midia" required>
+        <option value="DVD">DVD</option>
+        <option value="Blu-ray">Blu-ray</option>
+        <option value="Streaming">Streaming</option>
+      </select>
+  
+      <label for="isFavorite">Favorito:</label>
+      <input type="checkbox" id="isFavorite" name="isFavorite" [(ngModel)]="movie.isFavorite">
+  
+      <button (click)="saveMovie()">Salvar Filme</button>
+      <button (click)="deleteMovie()">Deletar Filme</button>
+      <button (click)="clearForm()">Limpar Formulário</button>
+    </form>
+  </div>
+  
+  <div *ngIf="!movie">
+    <h1>Carregar Filme</h1>
+    <input type="number" [(ngModel)]="movieId" placeholder="ID do Filme">
+    <button *ngIf="movieId" (click)="loadMovie(movieId)">Carregar Filme</button>
+  </div>
+  

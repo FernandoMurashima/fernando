@@ -2,30 +2,72 @@
     .movie {
         margin: 20px;
 
-            .cover{
-                img{
-                  
-                }
+        .cover {
+            img {
+                /* Estilos da imagem de capa, se necessário */
+            }
+        }
+
+        .name {
+            text-align: center;
+            font-size: 18px;
+            margin: 10px;
+
+            .title {
+                font-weight: bold;
             }
 
-            .name {
-                text-align: center;
-                font-size: 18px;
-                margin: 10px;
-
-                .title {
-                    font-weight: bold;
-                }
-
-                .year {
-                    
-                }
+            .year {
+                /* Estilos do ano, se necessário */
             }
+        }
     }
 }
 
 .ml-custom {
     margin-left: 130px; /* Mover o botão para a margem direita */
     //margin-right: 80px; /* Ajuste o espaçamento à direita conforme desejado */
-  }
-  
+}
+
+.header-container {
+    background-color: #dddddd; /* Nova cor de fundo */
+    border: 1px solid #999999; /* Adiciona borda */
+    border-radius: 5px; /* Arredonda as bordas */
+    padding: 10px; /* Adiciona espaço interno */
+}
+
+.header-title {
+    font-size: 24px; /* Aumenta o tamanho da fonte */
+    font-weight: bold; /* Coloca em negrito */
+    text-align: center; /* Centraliza o texto */
+    margin: 0 auto;
+}
+
+.filter-button {
+    background-color: #007bff; /* Nova cor de fundo */
+    color: #ffffff; /* Cor do texto */
+}
+
+.back-button {
+    background-color: #dc3545; /* Nova cor de fundo */
+    color: #ffffff; /* Cor do texto */
+}
+
+.search-container {
+    display: flex; /* Torna o container flexível */
+    align-items: center; /* Alinha os itens verticalmente ao centro */
+}
+
+.search-field {
+    background-color: #ffffff; /* Nova cor de fundo do campo de pesquisa */
+    border: 1px solid #cccccc; /* Borda do campo de pesquisa */
+    border-radius: 5px; /* Arredondamento das bordas */
+    padding: 5px 10px; /* Espaçamento interno */
+    flex: 1; /* Ocupa o espaço restante */
+}
+
+.search-label {
+    margin-right: 10px; /* Adiciona um espaço à direita do rótulo */
+    font-size: 14px; /* Tamanho da fonte do rótulo */
+    color: #555555; /* Cor do rótulo */
+}

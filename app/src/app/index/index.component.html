@@ -1,9 +1,65 @@
-<div class="container">
-    <h1>STREAMING DE FILMES - FGV</h1>
-    <p>Escolha uma das opções abaixo:</p>
-    <ul>
-      <li><a routerLink="/movie-list" class="option-link">Ver Filmes</a></li>
-      <li><a routerLink="/admin" class="option-link">Área do Administrador</a></li>
-    </ul>
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Streaming de Filmes - FGV</title>
+    <style>
+        body, html {
+            height: 100%;
+            margin: 0;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            background-color: #f0f0f0; /* Cor de fundo */
+            margin-top: 20px; /* Margem superior */
+        }
+        .container-wrapper {
+            display: flex;
+            flex-direction: column; /* Define a direção da flexbox como coluna */
+            align-items: center; /* Centraliza os contêineres horizontalmente */
+        }
+        .container {
+            background-color: #ffffff; /* Cor de fundo do container */
+            border: 1px solid #cccccc; /* Borda sólida cinza */
+            border-radius: 5px; /* Arredondamento das bordas */
+            padding: 20px; /* Espaçamento interno */
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1); /* Sombra */
+            max-width: 800px; /* Largura máxima */
+            width: 100%; /* Largura */
+            margin-bottom: 20px; /* Espaçamento inferior */
+            margin-top: 20px; /* Margem superior */
+        }
+        .container h1 {
+            text-align: center; /* Centralizar texto do cabeçalho */
+        }
+        .option-link {
+            text-decoration: none; /* Remover sublinhado dos links */
+            color: #333333; /* Cor do texto dos links */
+        }
+        .option-link:hover {
+            color: #000000; /* Cor do texto ao passar o mouse */
+        }
+    </style>
+</head>
+<body>
+<div class="page-container">
+  <div class="container-wrapper">
+      <div class="container" style="height: 200px;">
+          <h1>FERNANDO MURASHIMA</h1>
+      </div>
+
+      <div class="container" style="height: 400px;">
+          <h1>STREAMING DE FILMES - FGV</h1>
+          <p>Escolha uma das opções abaixo:</p>
+          <ul>
+              <li><a routerLink="/movie-list" class="option-link">Filmes</a></li>
+              <li><a routerLink="/admin" class="option-link">Cadastrar Filme (adm)</a></li>
+             <!--  <li><a routerLink="/movie-edit" class="option-link">Editar Filme (adm)</a></li> -->
+              <li><button (click)="editMovie()" class="option-link">Editar Filme (adm)</button></li>   
+          </ul>
+      </div>
   </div>
-  
+</div>
+</body>
+</html>
