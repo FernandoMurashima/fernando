@@ -35,7 +35,8 @@ export class AuthService {
 
   /**
    * Clear the user token
-   */
+   
+*/
   public clearToken(): void {
     this.token = null;
     localStorage.removeItem('token');
