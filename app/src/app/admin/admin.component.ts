@@ -16,7 +16,7 @@ export class AdminComponent {
     // Adicione o novo filme usando o serviço
     this.movieService.addMovie(this.newMovie).subscribe(() => {
       // Limpe os campos do formulário após adicionar o filme com sucesso
-      this.newMovie = { id: 0, title: '', year: 0, cover: '', description: '', midia: '', isFavorite: false };
+      this.newMovie = { id: 0, title: '', year: 1990, cover: '', description: '', midia: '', isFavorite: false };
     });
   }
 }

@@ -1,6 +1,6 @@
 <div *ngIf="isAdmin">
   <h2>Cadastrar Novo Filme</h2>
-  <form (ngSubmit)="onSubmit()" #movieForm="ngForm">
+  <form (ngSubmit)="onSubmit()" #movieForm="ngForm" action="/movies/" method="post">
     <div class="form-group">
       <label for="title">Título:</label>
       <input type="text" class="form-control" id="title" name="title" [(ngModel)]="newMovie.title" required>
