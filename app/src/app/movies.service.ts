@@ -33,7 +33,7 @@ export class MoviesService {
   }
 
   get(id: number): Observable<Movie> {
-    const url = `${environment.apiURL}/movies/${id}`;
+    const url = `${environment.apiURL}/movies/${id}/`;
     console.log('URL do filme:', url); // Adiciona um log para imprimir a URL do filme
     return this.http.get<Movie>(url).pipe(
       catchError(this.handleError)
@@ -52,21 +52,21 @@ export class MoviesService {
   }
 
   addMovie(movie: Movie): Observable<any> {
-    const url = `${environment.apiURL}/movies`;
+    const url = `${environment.apiURL}/movies/`;
     return this.http.post<any>(url, movie).pipe(
       catchError(this.handleError)
     );
   }
 
   updateMovie(id: number, movie: Movie): Observable<any> {
-    const url = `${environment.apiURL}/movies/${id}`;
+    const url = `${environment.apiURL}/movies/${id}/`;
     return this.http.put<any>(url, movie).pipe(
       catchError(this.handleError)
     );
   }
 
   deleteMovie(id: number): Observable<any> {
-    const url = `${environment.apiURL}/movies/${id}`;
+    const url = `${environment.apiURL}/movies/${id}/`;
     return this.http.delete<any>(url).pipe(
       catchError(this.handleError)
     );

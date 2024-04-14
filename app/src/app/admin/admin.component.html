@@ -63,7 +63,7 @@
     <button type="submit" class="btn btn-primary" [disabled]="!movieForm.valid">Cadastrar Filme</button>
     <!-- Botão para limpar o formulário -->
     <button type="button" class="btn btn-secondary" (click)="clearForm()">Limpar Formulário</button>
-
+    <button mat-raised-button color="accent" class="back-button" routerLink="/">Voltar</button>
     <p> </p>
 
     <div *ngIf="errorMessage" class="alert alert-danger">
