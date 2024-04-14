@@ -1,3 +1,32 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Streaming de Filmes - FGV</title>
+    <!-- Adicione o estilo global para o body -->
+    <style>
+      body {
+        background-color: #f0f0f0; /* Altera a cor de fundo do corpo da página */
+        margin: 0; /* Remove as margens padrão */
+        padding: 0; /* Remove o preenchimento padrão */
+      }
+
+      /* Adicione estilo para posicionar os rótulos acima das entradas */
+      .form-group {
+        display: flex;
+        flex-direction: column;
+        margin-bottom: 10px; /* Adiciona margem inferior entre os campos */
+      }
+
+      /* Estilize os rótulos */
+      .form-group label {
+        margin-bottom: 5px; /* Adiciona margem inferior aos rótulos */
+      }
+    </style>
+</head>
+<body>
+
 <div class="row justify-content-center">
   <div class="col-6 mt-5">
     <mat-card>
@@ -6,17 +35,15 @@
           <mat-card-title>Login</mat-card-title>
           <mat-card-subtitle>Por favor informe as suas credenciais.</mat-card-subtitle>
           <form [formGroup]="loginForm" (submit)="submit()">
-            <div class="row">
-              <mat-form-field class="col-12" appearance="fill">
-                <mat-label>Username</mat-label>
-                <input matInput formControlName="username" required>
-              </mat-form-field>
+            <!-- Use a classe .form-group para posicionar os rótulos acima das entradas -->
+            <div class="form-group">
+              <label>Username</label>
+              <input matInput formControlName="username" required>
             </div>
-            <div class="row">
-              <mat-form-field class="col-12" appearance="fill">
-                <mat-label>Password</mat-label>
-                <input matInput formControlName="password" type="password" required>
-              </mat-form-field>
+            <!-- Use a classe .form-group para posicionar os rótulos acima das entradas -->
+            <div class="form-group">
+              <label>Password</label>
+              <input matInput formControlName="password" type="password" required>
             </div>
             <div class="error" *ngIf="showError">
               Credenciais inválidas. Por favor corrija e tente novamente.
@@ -33,3 +60,6 @@
 
   </div>
 </div>
+
+</body>
+</html>

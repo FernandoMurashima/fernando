@@ -10,7 +10,7 @@ import { MovieEditComponent } from './movie-edit/movie-edit.component'; // Impor
 
 export const DEFAULT_ROUTE = '/movie-list';
 
-const routes: Routes = [
+ const routes: Routes = [
   { path: '', component: IndexComponent },
   { path: 'login', component: LoginComponent },
   { path: 'movie-list', component: MovieListComponent, canActivate: [AuthGuardService] },
@@ -19,7 +19,10 @@ const routes: Routes = [
   { path: 'movie-edit', component: MovieEditComponent }, // Adicione a rota para o MovieEditComponent
   { path: 'error', component: MovieDetailsComponent },
   // outras rotas
-];
+]; 
+
+
+
 
 @NgModule({
   imports: [RouterModule.forRoot(routes)],

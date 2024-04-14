@@ -8,6 +8,7 @@ import { ActivatedRoute, Router } from '@angular/router';
   styleUrls: ['./movie-edit.component.scss']
 })
 export class MovieEditComponent implements OnInit {
+  isAdmin: boolean = true;
   movie: Movie | undefined;
   originalMovie: Movie | undefined;
   movieId: number | undefined;
@@ -71,4 +72,3 @@ export class MovieEditComponent implements OnInit {
     }
   }
 }
-

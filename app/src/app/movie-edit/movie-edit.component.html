@@ -1,8 +1,10 @@
-<div class="page-header">
+<!-- movie-edit.component.html -->
+
+<div *ngIf="isAdmin" class="page-header">
   <h1 class="page-title">Edição de Filme</h1>
 </div>
 
-<div class="form-container">
+<div *ngIf="isAdmin" class="form-container">
   <div>
     <label for="movieId">ID do Filme:</label>
     <input type="number" id="movieId" name="movieId" [(ngModel)]="movieId">
@@ -53,4 +55,8 @@
       </div>
     </form>
   </div>
+</div>
+
+<div *ngIf="!isAdmin">
+  <p>Você não tem permissão para acessar esta página.</p>
 </div>
