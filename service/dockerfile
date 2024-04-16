@@ -15,12 +15,15 @@ WORKDIR /service
 COPY requirements.txt .
 
 # Instala as dependências do Django
-RUN pip install --upgrade pip && pip install -r requirements.txt
+RUN pip install --upgrade pip && pip install -r requirements.txt gunicorn
 
 # Copia o código fonte do Django
 COPY . .
 
 # Expõe a porta 8000 para o servidor Django
 EXPOSE 80
+
+COPY entrypoint.sh /service/entrypoint.sh
+RUN chmod +x /service/entrypoint.sh
 
 ENTRYPOINT [ "/service/entrypoint.sh" ]
