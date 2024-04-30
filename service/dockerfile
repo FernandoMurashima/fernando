@@ -1,5 +1,5 @@
 # Estágio 1: Configurando o ambiente de desenvolvimento Django
-FROM python:3.9 AS django-backend
+FROM python:3.9-slim-buster
 
 ARG postgres_host=''
 
@@ -11,11 +11,25 @@ RUN echo "starting build"
 # Define o diretório de trabalho para o serviço backend
 WORKDIR /service
 
+# Instala o pacote expect
+RUN apt-get update \
+    && apt-get install -y expect \
+    && apt-get install -y unzip curl netcat-openbsd \
+    && pip --version \
+    && python --version \
+    && pip install --upgrade pip \
+    && pip install --no-cache-dir gunicorn \
+    && pip --version \
+    && python --version \
+    && rm -rf /var/lib/apt/list/* \
+    && rm -rf /root/.cache \
+    && find / -name "*.pyc" -exec rm -f {} \;
+
 # Copia os arquivos de dependências do Django
 COPY requirements.txt .
 
 # Instala as dependências do Django
-RUN pip install --upgrade pip && pip install -r requirements.txt gunicorn
+RUN pip install --no-cache-dir -r requirements.txt
 
 # Copia o código fonte do Django
 COPY . .
@@ -23,7 +37,5 @@ COPY . .
 # Expõe a porta 8000 para o servidor Django
 EXPOSE 80
 
-COPY entrypoint.sh /service/entrypoint.sh
-RUN chmod +x /service/entrypoint.sh
-
+# Define o ponto de entrada do contêiner
 ENTRYPOINT [ "/service/entrypoint.sh" ]
